@@ -1,18 +1,48 @@
-import React, { useState } from 'react';
-import { LiveFeedItem, ReviewItem } from '../types';
-import { INITIAL_LIVE_FEED, CUSTOMER_REVIEWS } from '../data/marketData';
+import React, { useState, useEffect } from 'react';
+import { LiveFeedItem } from '../types';
+import { CUSTOMER_REVIEWS } from '../data/marketData';
+import { generateDynamicLogs } from '../utils/logGenerator';
 import { 
   Star, 
   Zap, 
   MessageSquare, 
   ArrowUpRight, 
   ArrowDownLeft, 
-  Headphones 
+  Headphones,
+  RefreshCw
 } from 'lucide-react';
 
 export const LiveFeedReviews: React.FC = () => {
-  const [liveFeeds] = useState<LiveFeedItem[]>(INITIAL_LIVE_FEED);
+  // Current 30-minute block index (Date.now() divided by 30 minutes in ms)
+  const getCurrentTimeBlock = () => Math.floor(Date.now() / (30 * 60 * 1000));
+  
+  const [timeBlock, setTimeBlock] = useState<number>(getCurrentTimeBlock());
+  const [liveFeeds, setLiveFeeds] = useState<LiveFeedItem[]>(() => generateDynamicLogs(getCurrentTimeBlock()));
   const [activeFeedTab, setActiveFeedTab] = useState<'all' | 'buy' | 'sell'>('all');
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  // Automatically update logs whenever a new 30-minute interval is reached
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const currentBlock = getCurrentTimeBlock();
+      if (currentBlock !== timeBlock) {
+        setTimeBlock(currentBlock);
+        setLiveFeeds(generateDynamicLogs(currentBlock));
+      }
+    }, 10000); // check every 10 seconds
+
+    return () => clearInterval(interval);
+  }, [timeBlock]);
+
+  // Optional manual refresh button simulation
+  const handleManualRefresh = () => {
+    setIsRefreshing(true);
+    setTimeout(() => {
+      const randomSeed = Math.floor(Math.random() * 100000);
+      setLiveFeeds(generateDynamicLogs(randomSeed));
+      setIsRefreshing(false);
+    }, 500);
+  };
 
   const filteredFeeds = liveFeeds.filter((feed) => {
     if (activeFeedTab === 'buy') return feed.type === 'buy';
@@ -44,7 +74,7 @@ export const LiveFeedReviews: React.FC = () => {
           <div>
             <h4 className="text-xs sm:text-sm font-bold text-white">Bantuan WhatsApp Fast Respon</h4>
             <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-              Jika salah ketik nama world atau server GT sedang antre, CS admin manusia siap membantu perbaikan order.
+              Jika salah ketik nama world atau butuh konfirmasi, admin WhatsApp siap membantu proses pengiriman order.
             </p>
           </div>
         </div>
@@ -54,15 +84,31 @@ export const LiveFeedReviews: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         
         {/* LOG TRANSAKSI TERBARU (5 cols) */}
-        <div className="lg:col-span-5 bg-slate-900/90 border border-slate-800 rounded-xl p-4 sm:p-5 space-y-3">
+        <div className="lg:col-span-5 bg-slate-900/90 border border-slate-800 rounded-xl p-4 sm:p-5 space-y-3 shadow-lg">
           <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
               <h3 className="font-bold text-slate-200 text-xs sm:text-sm uppercase tracking-wider">
                 Log Transaksi Terakhir
               </h3>
             </div>
-            <span className="text-[11px] text-slate-400">Live Bot Log</span>
+            
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] text-emerald-400 font-semibold bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-500/30">
+                Update 30 Menit
+              </span>
+              <button
+                type="button"
+                onClick={handleManualRefresh}
+                className="p-1 rounded text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                title="Refresh log transaksi"
+              >
+                <RefreshCw className={`w-3 h-3 ${isRefreshing ? 'animate-spin text-emerald-400' : ''}`} />
+              </button>
+            </div>
           </div>
 
           {/* Filter tabs */}
@@ -101,7 +147,7 @@ export const LiveFeedReviews: React.FC = () => {
             {filteredFeeds.map((feed) => (
               <div
                 key={feed.id}
-                className="p-2.5 rounded-lg bg-slate-950 border border-slate-800/80 flex items-center justify-between gap-3 text-xs"
+                className="p-2.5 rounded-lg bg-slate-950 border border-slate-800/80 flex items-center justify-between gap-3 text-xs hover:border-slate-700 transition-colors"
               >
                 <div className="flex items-center gap-2.5">
                   <div className={`p-1.5 rounded-md ${feed.type === 'buy' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-amber-500/10 text-amber-400'}`}>
@@ -184,7 +230,7 @@ export const LiveFeedReviews: React.FC = () => {
           <div className="p-3 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-400 flex items-center justify-between gap-3">
             <span>Mau kirim testimoni setelah order selesai? Hubungi admin di WhatsApp.</span>
             <a
-              href="https://wa.me/6281234567890?text=Halo%20Admin%20GrowStore,%20mau%20kirim%20testimoni"
+              href="https://wa.me/6285124935573?text=Halo%20Admin%20GrowStore,%20mau%20kirim%20testimoni"
               target="_blank"
               rel="noreferrer"
               className="text-emerald-400 hover:underline font-semibold shrink-0"
