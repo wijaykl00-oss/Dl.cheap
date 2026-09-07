@@ -4,6 +4,7 @@ import { HeroTransaction } from './components/HeroTransaction';
 import { LiveFeedReviews } from './components/LiveFeedReviews';
 import { OrderModal } from './components/OrderModal';
 import { OrderTrackerModal } from './components/OrderTrackerModal';
+import { InitialChoiceModal } from './components/InitialChoiceModal';
 import { Footer } from './components/Footer';
 import { MarketItem, Order, TransactionMode } from './types';
 import { MARKET_ITEMS } from './data/marketData';
@@ -15,6 +16,7 @@ export default function App() {
   const [activeMode, setActiveMode] = useState<TransactionMode>('buy');
 
   // Modals state
+  const [isInitialModalOpen, setIsInitialModalOpen] = useState(true);
   const [activeModalOrder, setActiveModalOrder] = useState<Order | null>(null);
   const [isTrackerOpen, setIsTrackerOpen] = useState(false);
 
@@ -35,11 +37,11 @@ export default function App() {
       quantity: 25,
       unitPrice: 3200,
       subtotal: 80000,
-      paymentFee: 560,
-      totalAmount: 80560,
+      paymentFee: 0,
+      totalAmount: 80000,
       growId: 'Reyhan_GT',
       worldName: 'REYFARM99',
-      contactWa: '08123456789',
+      contactWa: '085124935573',
       status: 'completed',
       createdAt: new Date(Date.now() - 3600000).toISOString(),
     },
@@ -56,7 +58,7 @@ export default function App() {
       totalAmount: 285000,
       growId: 'Reyhan_GT',
       worldName: 'STOREBUY',
-      contactWa: '08123456789',
+      contactWa: '085124935573',
       userPayout: {
         provider: 'BCA (Bank Central Asia)',
         accountNumber: '8295018233',
@@ -67,10 +69,19 @@ export default function App() {
     }
   ]);
 
+  // Handle choice from initial modal
+  const handleSelectInitialMode = (mode: TransactionMode) => {
+    setActiveMode(mode);
+    setIsInitialModalOpen(false);
+    const elem = document.getElementById('transaksi');
+    if (elem) {
+      elem.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   // Order submission
   const handleSubmitOrder = (newOrder: Order) => {
     setOrdersHistory((prev) => [newOrder, ...prev]);
-    setActiveModalOrder(newOrder);
   };
 
   // Update order status (simulate completion)
@@ -93,6 +104,13 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#070b14] text-slate-100 font-['Plus_Jakarta_Sans',sans-serif] selection:bg-emerald-500 selection:text-slate-950">
       
+      {/* Initial Pop-Up Modal (2 choices: Beli BGL/Item vs Jual BGL/Item) */}
+      <InitialChoiceModal
+        isOpen={isInitialModalOpen}
+        onSelectMode={handleSelectInitialMode}
+        onClose={() => setIsInitialModalOpen(false)}
+      />
+
       {/* Navigation Header */}
       <Header
         onOpenTracker={() => setIsTrackerOpen(true)}
@@ -121,10 +139,10 @@ export default function App() {
       {/* Floating WhatsApp Quick Action Button */}
       <div className="fixed bottom-6 right-6 z-40">
         <a
-          href="https://wa.me/6281234567890?text=Halo%20Admin%20GrowStore,%20saya%20butuh%20bantuan%20transaksi"
+          href="https://wa.me/6285124935573?text=Halo%20Admin%20GrowStore,%20saya%20butuh%20bantuan%20transaksi"
           target="_blank"
           rel="noreferrer"
-          className="flex items-center gap-2 px-4 py-3 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-xl shadow-emerald-500/30 hover:scale-105 transition-all group"
+          className="flex items-center gap-2 px-4 py-3 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-xl shadow-emerald-500/30 hover:scale-105 transition-all group cursor-pointer"
           title="Chat WhatsApp Customer Support 24 Jam"
         >
           <div className="relative">

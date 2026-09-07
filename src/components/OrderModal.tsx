@@ -367,7 +367,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({
               </button>
 
               <a
-                href={`https://wa.me/6281234567890?text=Halo%20Admin%20GrowStore,%20mau%20konfirmasi%20Invoice%20${order.id}`}
+                href={`https://wa.me/6285124935573?text=No.pemesanan%20:%20${encodeURIComponent(order.id)}%0AGrowid%20:%20${encodeURIComponent(order.growId)}%0ANama%20world%20:%20${encodeURIComponent(order.worldName)}%0Afoto%20bukti%20bayar%20yang%20diupload%20:%20(Telah%20diupload%20di%20web)`}
                 target="_blank"
                 rel="noreferrer"
                 className="w-full py-2 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold flex items-center justify-center gap-1.5 border border-slate-700 transition-colors"

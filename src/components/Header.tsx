@@ -71,7 +71,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* WA Support Button */}
           <a
-            href="https://wa.me/6281234567890?text=Halo%20Admin%20GrowStore,%20mau%20tanya%20transaksi%20Growtopia"
+            href="https://wa.me/6285124935573?text=Halo%20Admin%20GrowStore,%20mau%20tanya%20transaksi%20Growtopia"
             target="_blank"
             rel="noreferrer"
             className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 hover:bg-emerald-900/60 transition-all cursor-pointer"
@@ -118,7 +118,7 @@ export const Header: React.FC<HeaderProps> = ({
             Pusat Bantuan & FAQ
           </button>
           <a
-            href="https://wa.me/6281234567890?text=Halo%20Admin%20GrowStore,%20mau%20tanya%20transaksi"
+            href="https://wa.me/6285124935573?text=Halo%20Admin%20GrowStore,%20mau%20tanya%20transaksi"
             target="_blank"
             rel="noreferrer"
             className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-emerald-600 font-bold text-xs text-white"

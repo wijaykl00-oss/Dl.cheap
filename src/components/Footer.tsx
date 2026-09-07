@@ -72,7 +72,7 @@ export const Footer: React.FC = () => {
         {/* CHANNELS & CONTACTS */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto">
           <a
-            href="https://wa.me/6281234567890?text=Halo%20Admin%20GrowStore,%20mau%20tanya%20transaksi"
+            href="https://wa.me/6285124935573?text=Halo%20Admin%20GrowStore,%20mau%20tanya%20transaksi"
             target="_blank"
             rel="noreferrer"
             className="p-4 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 transition-colors flex items-center gap-3 cursor-pointer"
@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
               <div className="font-bold text-white text-xs sm:text-sm flex items-center gap-1">
                 WhatsApp Admin <ExternalLink className="w-3 h-3 text-slate-500" />
               </div>
-              <div className="text-[11px] text-slate-400 mt-0.5">0812-3456-7890 (Fast Respon)</div>
+              <div className="text-[11px] text-slate-400 mt-0.5">0851-2493-5573 (Fast Respon)</div>
             </div>
           </a>
 

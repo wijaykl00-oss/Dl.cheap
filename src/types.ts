@@ -60,6 +60,8 @@ export interface Order {
     boxNote: string;
   };
   status: 'pending_payment' | 'verifying' | 'bot_delivering' | 'completed' | 'cancelled';
+  paymentProof?: string;
+  paymentProofName?: string;
   createdAt: string;
 }
 
