@@ -393,8 +393,13 @@ export const HeroTransaction: React.FC<HeroTransactionProps> = ({
                   : 'bg-[#050b18] border-blue-950 text-slate-400 hover:text-slate-200 hover:border-blue-900'
               }`}
             >
-              <GtItemIcon type="rayman" size="sm" className="w-5 h-5" />
-              <span>Item Langka GT</span>
+              <div className="w-5 h-5 rounded-lg bg-gradient-to-br from-cyan-950 to-blue-950 border border-cyan-400/60 flex items-center justify-center shadow-[0_0_10px_rgba(34,211,238,0.4)] shrink-0">
+                <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 4.5V13" stroke="#38BDF8" strokeWidth="2.5" strokeLinecap="round" />
+                  <circle cx="12" cy="17.5" r="1.3" fill="#38BDF8" />
+                </svg>
+              </div>
+              <span>Item</span>
             </button>
           </div>
 

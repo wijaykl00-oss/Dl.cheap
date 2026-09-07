@@ -113,7 +113,7 @@ export const RateStockTable: React.FC<RateStockTableProps> = ({ onSelectAction }
                 : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-slate-200'
             }`}
           >
-            Item Langka GT
+            Item
           </button>
         </div>
 
