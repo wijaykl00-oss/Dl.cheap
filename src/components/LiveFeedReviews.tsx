@@ -96,14 +96,11 @@ export const LiveFeedReviews: React.FC = () => {
               </h3>
             </div>
             
-            <div className="flex items-center gap-2">
-              <span className="text-[10px] text-sky-300 font-bold bg-blue-950/90 px-2.5 py-0.5 rounded-full border border-sky-500/30">
-                Update 30 Menit
-              </span>
+            <div className="flex items-center gap-1.5">
               <button
                 type="button"
                 onClick={handleManualRefresh}
-                className="p-1 rounded-lg text-slate-400 hover:text-sky-300 hover:bg-[#0e1c3e] transition-colors cursor-pointer"
+                className="p-1.5 rounded-lg text-slate-400 hover:text-sky-300 hover:bg-[#0e1c3e] transition-colors cursor-pointer"
                 title="Refresh log transaksi"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin text-sky-400' : ''}`} />
