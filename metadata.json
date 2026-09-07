@@ -1,0 +1,6 @@
+{
+  "name": "GrowStore - Marketplace Transaksi Growtopia",
+  "description": "Platform jual beli BGL, DL, dan item game Growtopia modern, cepat, aman dengan kalkulator otomatis dan bot delivery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
