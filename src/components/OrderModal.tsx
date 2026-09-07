@@ -6,14 +6,9 @@ import {
   Copy, 
   Check, 
   Clock, 
-  AlertTriangle, 
   CheckCircle2, 
-  ExternalLink, 
   ArrowRight,
-  ShieldCheck,
-  QrCode,
-  MapPin,
-  KeyRound
+  MapPin
 } from 'lucide-react';
 
 interface OrderModalProps {
@@ -86,27 +81,27 @@ export const OrderModal: React.FC<OrderModalProps> = ({
   const isCompleted = order.status === 'completed';
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xs overflow-y-auto">
-      <div className="relative w-full max-w-lg bg-slate-900 border border-slate-700 rounded-2xl p-5 sm:p-6 shadow-2xl space-y-5 my-8">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-sm overflow-y-auto">
+      <div className="relative w-full max-w-lg bg-[#081022] border border-blue-900/60 rounded-3xl p-5 sm:p-7 shadow-2xl space-y-5 my-8">
         
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 transition-colors cursor-pointer"
+          className="absolute top-4 right-4 p-1.5 rounded-xl text-slate-400 hover:text-white bg-[#0f1d44] transition-colors cursor-pointer"
         >
           <X className="w-4 h-4" />
         </button>
 
         {/* Modal Header */}
         <div className="text-center space-y-1">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-800 border border-slate-700 text-slate-300">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#040814] border border-blue-900 text-sky-300">
             <span>Invoice: {order.id}</span>
             <button
               onClick={() => handleCopy(order.id, 'invoice')}
-              className="hover:text-emerald-400 ml-1 cursor-pointer"
+              className="hover:text-sky-400 ml-1 cursor-pointer"
               title="Salin nomor invoice"
             >
-              {copiedField === 'invoice' ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+              {copiedField === 'invoice' ? <Check className="w-3 h-3 text-sky-400" /> : <Copy className="w-3 h-3" />}
             </button>
           </div>
           <h3 className="text-lg sm:text-xl font-bold text-white">
@@ -116,15 +111,15 @@ export const OrderModal: React.FC<OrderModalProps> = ({
           </h3>
           <p className="text-xs text-slate-400">
             {isCompleted 
-              ? 'Terima kasih telah berbelanja di GrowStore!'
+              ? 'Terima kasih telah berbelanja di dlcheaps!'
               : (order.mode === 'buy' ? 'Silakan selesaikan pembayaran sebelum batas waktu berakhir' : 'Silakan drop item ke world bot penampung resmi')}
           </p>
         </div>
 
         {/* COMPLETED SUCCESS VIEW */}
         {isCompleted ? (
-          <div className="p-5 rounded-xl bg-emerald-950/30 border border-emerald-500/40 text-center space-y-3.5">
-            <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
+          <div className="p-5 rounded-2xl bg-[#040814] border border-sky-500/40 text-center space-y-3.5 shadow-xl">
+            <div className="w-12 h-12 rounded-full bg-sky-500/20 text-sky-400 flex items-center justify-center mx-auto border border-sky-500/40">
               <CheckCircle2 className="w-7 h-7" />
             </div>
             <div>
@@ -136,24 +131,24 @@ export const OrderModal: React.FC<OrderModalProps> = ({
               </p>
             </div>
 
-            <div className="p-3 bg-slate-950 rounded-lg border border-slate-800 text-xs text-left space-y-1">
+            <div className="p-3 bg-[#081022] rounded-xl border border-blue-900 text-xs text-left space-y-1">
               <div className="flex justify-between">
                 <span className="text-slate-400">Invoice:</span>
-                <span className="font-mono text-slate-200">{order.id}</span>
+                <span className="font-mono text-white">{order.id}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-400">Item:</span>
-                <span className="text-slate-200">{order.quantity} {order.itemName}</span>
+                <span className="text-white">{order.quantity} {order.itemName}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-400">Total:</span>
-                <span className="font-bold text-emerald-400">{formatRupiah(order.totalAmount)}</span>
+                <span className="font-bold text-sky-400">{formatRupiah(order.totalAmount)}</span>
               </div>
             </div>
 
             <button
               onClick={onClose}
-              className="w-full py-2.5 rounded-lg bg-emerald-500 text-slate-950 font-bold text-xs hover:bg-emerald-400 cursor-pointer transition-colors"
+              className="w-full py-2.5 rounded-xl bg-sky-500 text-slate-950 font-bold text-xs hover:bg-sky-400 cursor-pointer transition-colors shadow-lg shadow-sky-500/20"
             >
               Tutup & Kembali ke Beranda
             </button>
@@ -163,12 +158,12 @@ export const OrderModal: React.FC<OrderModalProps> = ({
           <div className="space-y-4">
             
             {/* Countdown timer */}
-            <div className="flex items-center justify-between p-2.5 rounded-lg bg-slate-950 border border-slate-800 text-xs">
+            <div className="flex items-center justify-between p-2.5 rounded-xl bg-[#040814] border border-blue-900/80 text-xs">
               <div className="flex items-center gap-1.5 text-slate-400">
-                <Clock className="w-3.5 h-3.5 text-amber-400" />
+                <Clock className="w-3.5 h-3.5 text-sky-400" />
                 <span>Batas Waktu:</span>
               </div>
-              <span className="font-mono text-sm font-bold text-amber-400">
+              <span className="font-mono text-sm font-bold text-sky-400">
                 {formatTimer(timeLeft)}
               </span>
             </div>
@@ -178,12 +173,12 @@ export const OrderModal: React.FC<OrderModalProps> = ({
               <div className="space-y-3">
                 {order.paymentMethod?.category === 'qris' ? (
                   /* QRIS Card */
-                  <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 text-center space-y-2.5">
+                  <div className="p-4 rounded-2xl bg-[#040814] border border-blue-900/80 text-center space-y-2.5">
                     <span className="text-xs font-semibold text-slate-300 block">
                       Scan QRIS Menggunakan E-Wallet / M-Banking Apapun
                     </span>
                     
-                    <div className="w-44 h-44 mx-auto bg-white p-2.5 rounded-xl shadow-md flex flex-col items-center justify-center relative">
+                    <div className="w-44 h-44 mx-auto bg-white p-2.5 rounded-2xl shadow-xl flex flex-col items-center justify-center relative border-2 border-slate-800">
                       <svg viewBox="0 0 100 100" className="w-full h-full">
                         <rect x="0" y="0" width="100" height="100" fill="white" />
                         <rect x="10" y="10" width="25" height="25" fill="#0f172a" />
@@ -208,66 +203,66 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                         <rect x="70" y="70" width="16" height="8" fill="#0f172a" />
                       </svg>
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="px-2 py-0.5 rounded bg-emerald-500 text-slate-950 text-[9px] font-bold">
+                        <div className="px-2 py-0.5 rounded bg-sky-500 text-slate-950 text-[9px] font-bold">
                           QRIS GT
                         </div>
                       </div>
                     </div>
 
                     <div className="text-[11px] text-slate-400">
-                      Merchant: <strong className="text-slate-200">GROWSTORE DIGITAL (ID: 109281)</strong>
+                      Merchant: <strong className="text-white">DLCHEAPS RESMI</strong>
                     </div>
                   </div>
                 ) : (
                   /* Transfer Bank */
-                  <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-2.5 text-xs">
-                    <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+                  <div className="p-3.5 rounded-2xl bg-[#040814] border border-blue-900/80 space-y-2.5 text-xs">
+                    <div className="flex items-center justify-between pb-2 border-b border-blue-950">
                       <span className="text-slate-400">Metode:</span>
                       <strong className="text-white">{order.paymentMethod?.name}</strong>
                     </div>
                     <div>
                       <span className="text-slate-400 block mb-1">Nomor Rekening Tujuan:</span>
-                      <div className="flex items-center justify-between p-2 rounded-lg bg-slate-900 border border-slate-800 font-mono text-sm font-bold text-emerald-400">
-                        <span>{order.paymentMethod?.accountNumber || '8295-0182-3391'}</span>
+                      <div className="flex items-center justify-between p-2 rounded-xl bg-[#081022] border border-blue-900/80 font-mono text-sm font-bold text-sky-400">
+                        <span>{order.paymentMethod?.accountNumber || '085124935573'}</span>
                         <button
                           onClick={() => handleCopy(order.paymentMethod?.accountNumber || '', 'acc')}
-                          className="flex items-center gap-1 text-xs text-slate-400 hover:text-white cursor-pointer"
+                          className="flex items-center gap-1 text-xs text-sky-300 hover:text-white cursor-pointer"
                         >
-                          {copiedField === 'acc' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                          {copiedField === 'acc' ? <Check className="w-3.5 h-3.5 text-sky-400" /> : <Copy className="w-3.5 h-3.5" />}
                           <span>{copiedField === 'acc' ? 'Tersalin' : 'Salin'}</span>
                         </button>
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-slate-400">Atas Nama:</span>
-                      <span className="text-slate-200 font-semibold">{order.paymentMethod?.accountHolder}</span>
+                      <span className="text-white font-semibold">{order.paymentMethod?.accountHolder || 'DLCHEAPS RESMI'}</span>
                     </div>
                   </div>
                 )}
 
                 {/* Amount to Pay */}
-                <div className="p-3 rounded-xl bg-emerald-950/20 border border-emerald-500/30 flex items-center justify-between">
+                <div className="p-3.5 rounded-2xl bg-[#040814] border border-sky-500/30 flex items-center justify-between">
                   <div>
                     <span className="text-[11px] text-slate-400 block">Total Nominal Transfer:</span>
-                    <span className="text-base font-bold text-emerald-400">
+                    <span className="text-base font-bold text-sky-400">
                       {formatRupiah(order.totalAmount)}
                     </span>
                   </div>
                   <button
                     onClick={() => handleCopy(order.totalAmount.toString(), 'amount')}
-                    className="p-1.5 rounded bg-slate-900 text-slate-300 hover:text-white text-xs flex items-center gap-1 cursor-pointer border border-slate-700"
+                    className="p-1.5 px-3 rounded-lg bg-sky-500/20 text-sky-300 hover:text-white text-xs flex items-center gap-1 cursor-pointer border border-sky-500/30 font-bold"
                     title="Salin nominal"
                   >
-                    {copiedField === 'amount' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copiedField === 'amount' ? <Check className="w-3.5 h-3.5 text-sky-400" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>Salin</span>
                   </button>
                 </div>
 
                 {/* Destination Confirmation */}
-                <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800 text-xs space-y-1">
+                <div className="p-2.5 rounded-xl bg-[#040814] border border-blue-900/80 text-xs space-y-1">
                   <div className="flex justify-between">
                     <span className="text-slate-400">Tujuan World:</span>
-                    <strong className="text-cyan-400">{order.worldName}</strong>
+                    <strong className="text-sky-400">{order.worldName}</strong>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-400">GrowID:</span>
@@ -280,28 +275,28 @@ export const OrderModal: React.FC<OrderModalProps> = ({
             {/* MODE JUAL */}
             {order.mode === 'sell' && (
               <div className="space-y-3 text-xs">
-                <div className="p-3.5 rounded-xl bg-amber-950/20 border border-amber-500/30 space-y-2">
-                  <div className="flex items-center gap-1.5 text-amber-400 font-bold">
+                <div className="p-3.5 rounded-2xl bg-[#040814] border border-blue-900/80 space-y-2">
+                  <div className="flex items-center gap-1.5 text-sky-400 font-bold">
                     <MapPin className="w-4 h-4" />
                     <span>Instruksi Drop Item ke World Bot:</span>
                   </div>
 
                   <div className="space-y-1.5">
-                    <div className="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                    <div className="flex items-center justify-between p-2 rounded-lg bg-[#081022] border border-blue-900/80">
                       <span className="text-slate-400">Nama World:</span>
-                      <strong className="text-emerald-400 font-mono tracking-wider">
+                      <strong className="text-sky-400 font-mono tracking-wider">
                         {order.dropInstructions?.world || 'GROWSTOREBUY'}
                       </strong>
                     </div>
-                    <div className="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                    <div className="flex items-center justify-between p-2 rounded-lg bg-[#081022] border border-blue-900/80">
                       <span className="text-slate-400">Bot Penerima:</span>
-                      <strong className="text-cyan-400 font-mono">
+                      <strong className="text-sky-300 font-mono">
                         {order.dropInstructions?.botName || 'StoreBot_ID88'}
                       </strong>
                     </div>
-                    <div className="flex items-center justify-between p-2 rounded-lg bg-slate-950 border border-slate-800">
+                    <div className="flex items-center justify-between p-2 rounded-lg bg-[#081022] border border-blue-900/80">
                       <span className="text-slate-400">Security PIN Door:</span>
-                      <strong className="text-amber-400 font-mono">
+                      <strong className="text-white font-mono">
                         {order.dropInstructions?.securityPin || '9842'}
                       </strong>
                     </div>
@@ -313,7 +308,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                 </div>
 
                 {/* Payout destination */}
-                <div className="p-3 rounded-lg bg-slate-950 border border-slate-800 space-y-1">
+                <div className="p-3 rounded-xl bg-[#040814] border border-blue-900/80 space-y-1">
                   <div className="flex justify-between">
                     <span className="text-slate-400">Pencairan Ke:</span>
                     <strong className="text-white">{order.userPayout?.provider} ({order.userPayout?.accountNumber})</strong>
@@ -322,9 +317,9 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                     <span className="text-slate-400">Atas Nama:</span>
                     <span className="text-slate-200">{order.userPayout?.accountHolder}</span>
                   </div>
-                  <div className="flex justify-between pt-1 border-t border-slate-800">
+                  <div className="flex justify-between pt-1 border-t border-blue-950">
                     <span className="text-slate-400">Dana Cair:</span>
-                    <strong className="text-amber-400 font-bold">{formatRupiah(order.totalAmount)}</strong>
+                    <strong className="text-sky-400 font-bold">{formatRupiah(order.totalAmount)}</strong>
                   </div>
                 </div>
               </div>
@@ -332,12 +327,12 @@ export const OrderModal: React.FC<OrderModalProps> = ({
 
             {/* SIMULATION LOADER */}
             {isSimulating && (
-              <div className="p-3 rounded-lg bg-slate-950 border border-cyan-500/40 text-center space-y-1.5">
-                <div className="text-cyan-400 text-xs font-semibold">
+              <div className="p-3 rounded-xl bg-[#040814] border border-sky-500/40 text-center space-y-1.5">
+                <div className="text-sky-400 text-xs font-semibold">
                   {simulationStep}
                 </div>
                 <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                  <div className="bg-emerald-500 h-full w-full animate-pulse"></div>
+                  <div className="bg-sky-400 h-full w-full animate-pulse"></div>
                 </div>
               </div>
             )}
@@ -348,11 +343,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                 type="button"
                 disabled={isSimulating}
                 onClick={handleSimulateCompletion}
-                className={`w-full py-2.5 px-4 rounded-lg font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-colors ${
-                  order.mode === 'buy'
-                    ? 'bg-emerald-500 hover:bg-emerald-400 text-slate-950'
-                    : 'bg-amber-500 hover:bg-amber-400 text-slate-950'
-                }`}
+                className="w-full py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-colors bg-sky-500 hover:bg-sky-400 text-slate-950 shadow-md shadow-sky-500/20"
               >
                 {isSimulating ? (
                   <span>Sedang Memproses Transaksi...</span>
@@ -367,13 +358,12 @@ export const OrderModal: React.FC<OrderModalProps> = ({
               </button>
 
               <a
-                href={`https://wa.me/6285124935573?text=No.pemesanan%20:%20${encodeURIComponent(order.id)}%0AGrowid%20:%20${encodeURIComponent(order.growId)}%0ANama%20world%20:%20${encodeURIComponent(order.worldName)}%0Afoto%20bukti%20bayar%20yang%20diupload%20:%20(Telah%20diupload%20di%20web)`}
+                href={`https://wa.me/6285124935573?text=Nopesanan:%20${encodeURIComponent(order.id)}%0AGrow%20id%20:%20${encodeURIComponent(order.growId)}%0ANama%20world:%20${encodeURIComponent(order.worldName)}%0AItem%20:%20${encodeURIComponent(order.itemName)}%0AJumlah%20:%20${encodeURIComponent(order.quantity.toString())}%0ATotal%20Harga%20:%20${encodeURIComponent(formatRupiah(order.totalAmount))}%0AFoto%20bukti%20pembayaran%20:%20(Telah%20diupload%20di%20web)`}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full py-2 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold flex items-center justify-center gap-1.5 border border-slate-700 transition-colors"
+                className="w-full py-2.5 px-3 rounded-xl bg-[#081022] hover:bg-[#0c183a] text-slate-300 text-xs font-semibold flex items-center justify-center gap-1.5 border border-blue-900 transition-colors"
               >
-                <ExternalLink className="w-3 h-3 text-emerald-400" />
-                <span>Kendala Transaksi? Chat WhatsApp Admin</span>
+                <span className="text-sky-400">Kendala Transaksi? Chat WhatsApp Admin (085124935573)</span>
               </a>
             </div>
 

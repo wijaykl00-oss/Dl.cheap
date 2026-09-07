@@ -51,12 +51,12 @@ export const LiveFeedReviews: React.FC = () => {
   });
 
   return (
-    <section id="testimoni" className="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-800">
+    <section id="testimoni" className="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-blue-950/80">
       
       {/* 2 Practical Store Guarantees */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-        <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 flex items-start gap-3">
-          <div className="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center shrink-0 text-cyan-400">
+        <div className="p-4 rounded-2xl bg-[#081022] border border-blue-900/60 flex items-start gap-3 shadow-lg">
+          <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center shrink-0 text-sky-400">
             <Zap className="w-5 h-5" />
           </div>
           <div>
@@ -67,8 +67,8 @@ export const LiveFeedReviews: React.FC = () => {
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 flex items-start gap-3">
-          <div className="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center shrink-0 text-blue-400">
+        <div className="p-4 rounded-2xl bg-[#081022] border border-blue-900/60 flex items-start gap-3 shadow-lg">
+          <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center shrink-0 text-blue-400">
             <Headphones className="w-5 h-5" />
           </div>
           <div>
@@ -84,40 +84,40 @@ export const LiveFeedReviews: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         
         {/* LOG TRANSAKSI TERBARU (5 cols) */}
-        <div className="lg:col-span-5 bg-slate-900/90 border border-slate-800 rounded-xl p-4 sm:p-5 space-y-3 shadow-lg">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
+        <div className="lg:col-span-5 bg-[#081022] border border-blue-900/60 rounded-3xl p-4 sm:p-6 space-y-3 shadow-xl">
+          <div className="flex items-center justify-between border-b border-blue-950/80 pb-3">
             <div className="flex items-center gap-2">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-400"></span>
               </span>
-              <h3 className="font-bold text-slate-200 text-xs sm:text-sm uppercase tracking-wider">
+              <h3 className="font-bold text-white text-xs sm:text-sm uppercase tracking-wider">
                 Log Transaksi Terakhir
               </h3>
             </div>
             
             <div className="flex items-center gap-2">
-              <span className="text-[10px] text-emerald-400 font-semibold bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-500/30">
+              <span className="text-[10px] text-sky-300 font-bold bg-blue-950/90 px-2.5 py-0.5 rounded-full border border-sky-500/30">
                 Update 30 Menit
               </span>
               <button
                 type="button"
                 onClick={handleManualRefresh}
-                className="p-1 rounded text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                className="p-1 rounded-lg text-slate-400 hover:text-sky-300 hover:bg-[#0e1c3e] transition-colors cursor-pointer"
                 title="Refresh log transaksi"
               >
-                <RefreshCw className={`w-3 h-3 ${isRefreshing ? 'animate-spin text-emerald-400' : ''}`} />
+                <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin text-sky-400' : ''}`} />
               </button>
             </div>
           </div>
 
           {/* Filter tabs */}
-          <div className="flex items-center gap-1.5 p-1 rounded-lg bg-slate-950 border border-slate-800 text-xs">
+          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[#040814] border border-blue-900/80 text-xs">
             <button
               type="button"
               onClick={() => setActiveFeedTab('all')}
-              className={`flex-1 py-1 rounded-md font-semibold transition-colors cursor-pointer ${
-                activeFeedTab === 'all' ? 'bg-slate-800 text-white' : 'text-slate-400 hover:text-slate-200'
+              className={`flex-1 py-1.5 rounded-lg font-semibold transition-colors cursor-pointer ${
+                activeFeedTab === 'all' ? 'bg-[#0f1d44] text-white shadow-sm' : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               Semua
@@ -125,8 +125,8 @@ export const LiveFeedReviews: React.FC = () => {
             <button
               type="button"
               onClick={() => setActiveFeedTab('buy')}
-              className={`flex-1 py-1 rounded-md font-semibold transition-colors cursor-pointer ${
-                activeFeedTab === 'buy' ? 'bg-emerald-500/20 text-emerald-400' : 'text-slate-400 hover:text-slate-200'
+              className={`flex-1 py-1.5 rounded-lg font-semibold transition-colors cursor-pointer ${
+                activeFeedTab === 'buy' ? 'bg-sky-500/20 text-sky-300' : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               Beli
@@ -134,8 +134,8 @@ export const LiveFeedReviews: React.FC = () => {
             <button
               type="button"
               onClick={() => setActiveFeedTab('sell')}
-              className={`flex-1 py-1 rounded-md font-semibold transition-colors cursor-pointer ${
-                activeFeedTab === 'sell' ? 'bg-amber-500/20 text-amber-400' : 'text-slate-400 hover:text-slate-200'
+              className={`flex-1 py-1.5 rounded-lg font-semibold transition-colors cursor-pointer ${
+                activeFeedTab === 'sell' ? 'bg-blue-600/30 text-blue-300' : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               Jual
@@ -147,30 +147,30 @@ export const LiveFeedReviews: React.FC = () => {
             {filteredFeeds.map((feed) => (
               <div
                 key={feed.id}
-                className="p-2.5 rounded-lg bg-slate-950 border border-slate-800/80 flex items-center justify-between gap-3 text-xs hover:border-slate-700 transition-colors"
+                className="p-3 rounded-2xl bg-[#040814] border border-blue-950 hover:border-blue-900/80 flex items-center justify-between gap-3 text-xs transition-colors"
               >
                 <div className="flex items-center gap-2.5">
-                  <div className={`p-1.5 rounded-md ${feed.type === 'buy' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-amber-500/10 text-amber-400'}`}>
+                  <div className={`p-1.5 rounded-lg ${feed.type === 'buy' ? 'bg-sky-500/15 text-sky-400' : 'bg-blue-500/15 text-blue-400'}`}>
                     {feed.type === 'buy' ? <ArrowUpRight className="w-3.5 h-3.5" /> : <ArrowDownLeft className="w-3.5 h-3.5" />}
                   </div>
                   <div>
                     <div className="flex items-center gap-1.5">
-                      <span className="font-semibold text-slate-200">{feed.growIdMasked}</span>
-                      <span className={`text-[9px] px-1 py-0.2 rounded font-bold uppercase ${
-                        feed.type === 'buy' ? 'bg-emerald-950 text-emerald-400' : 'bg-amber-950 text-amber-400'
+                      <span className="font-bold text-white">{feed.growIdMasked}</span>
+                      <span className={`text-[9px] px-1.5 py-0.2 rounded font-bold uppercase ${
+                        feed.type === 'buy' ? 'bg-sky-950 text-sky-300 border border-sky-500/30' : 'bg-blue-950 text-blue-300 border border-blue-500/30'
                       }`}>
                         {feed.type === 'buy' ? 'Beli' : 'Jual'}
                       </span>
                     </div>
                     <div className="text-[11px] text-slate-400 mt-0.5">
-                      {feed.quantity} • <span className="text-slate-300">{feed.method}</span>
+                      {feed.quantity} • <span className="text-slate-200">{feed.method}</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="text-right shrink-0">
-                  <span className="font-semibold text-slate-200 block">{feed.totalIdr}</span>
-                  <span className="text-[10px] text-slate-500">{feed.timeAgo}</span>
+                  <span className="font-extrabold text-sky-400 block">{feed.totalIdr}</span>
+                  <span className="text-[10px] text-slate-400">{feed.timeAgo}</span>
                 </div>
               </div>
             ))}
@@ -183,57 +183,57 @@ export const LiveFeedReviews: React.FC = () => {
 
         {/* TESTIMONI PELANGGAN (7 cols) */}
         <div className="lg:col-span-7 space-y-3">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
+          <div className="flex items-center justify-between border-b border-blue-950 pb-3">
             <div className="flex items-center gap-2">
-              <MessageSquare className="w-4 h-4 text-amber-400" />
-              <h3 className="font-bold text-slate-200 text-xs sm:text-sm uppercase tracking-wider">
+              <MessageSquare className="w-4 h-4 text-sky-400" />
+              <h3 className="font-bold text-white text-xs sm:text-sm uppercase tracking-wider">
                 Ulasan & Testimoni Pelanggan
               </h3>
             </div>
-            <span className="text-[11px] text-slate-400">Komunitas Growtopia ID</span>
+            <span className="text-[11px] text-sky-400 font-medium">Komunitas Growtopia ID</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {CUSTOMER_REVIEWS.map((rev) => (
               <div
                 key={rev.id}
-                className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between space-y-2.5 text-xs"
+                className="p-4 rounded-2xl bg-[#081022] border border-blue-900/60 flex flex-col justify-between space-y-2.5 text-xs shadow-md"
               >
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
                     <div className="flex items-center gap-0.5">
                       {[...Array(rev.rating)].map((_, i) => (
-                        <Star key={i} className="w-3 h-3 text-amber-400 fill-amber-400" />
+                        <Star key={i} className="w-3.5 h-3.5 text-sky-400 fill-sky-400" />
                       ))}
                     </div>
-                    <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-800 text-slate-400 border border-slate-700">
+                    <span className="text-[10px] px-2 py-0.5 rounded-lg bg-[#040814] text-sky-300 border border-blue-900/70 font-semibold">
                       {rev.itemTraded}
                     </span>
                   </div>
 
-                  <p className="text-slate-300 leading-relaxed italic text-[11px] sm:text-xs">
+                  <p className="text-slate-200 leading-relaxed italic text-[11px] sm:text-xs">
                     "{rev.review}"
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between pt-2 border-t border-slate-800/80 text-[11px]">
+                <div className="flex items-center justify-between pt-2.5 border-t border-blue-950/80 text-[11px]">
                   <div className="flex items-center gap-1.5">
-                    <span className="font-semibold text-slate-200">{rev.name}</span>
-                    <span className="text-slate-500 font-mono">({rev.growId})</span>
+                    <span className="font-bold text-white">{rev.name}</span>
+                    <span className="text-sky-400/80 font-mono">({rev.growId})</span>
                   </div>
-                  <span className="text-slate-500">{rev.date.split(',')[0]}</span>
+                  <span className="text-slate-400">{rev.date.split(',')[0]}</span>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="p-3 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-400 flex items-center justify-between gap-3">
+          <div className="p-3.5 rounded-2xl bg-[#081022] border border-blue-900/60 text-xs text-slate-300 flex items-center justify-between gap-3 shadow-md">
             <span>Mau kirim testimoni setelah order selesai? Hubungi admin di WhatsApp.</span>
             <a
-              href="https://wa.me/6285124935573?text=Halo%20Admin%20GrowStore,%20mau%20kirim%20testimoni"
+              href="https://wa.me/6285124935573?text=Halo%20Admin%20dlcheaps,%20mau%20kirim%20testimoni"
               target="_blank"
               rel="noreferrer"
-              className="text-emerald-400 hover:underline font-semibold shrink-0"
+              className="text-sky-400 hover:text-sky-300 hover:underline font-bold shrink-0"
             >
               Kirim Testi &rarr;
             </a>

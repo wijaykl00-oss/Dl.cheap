@@ -156,7 +156,7 @@ export const PAYMENT_METHODS: PaymentMethod[] = [
     feeFixed: 0,
     badge: 'Bebas Biaya Transfer',
     accountNumber: '085124935573',
-    accountHolder: 'GROWSTORE RESMI',
+    accountHolder: 'DLCHEAPS RESMI',
     instruction: 'Transfer ke nomor DANA tertera, lalu upload bukti transfer di bawah.',
     iconName: 'Wallet',
   },
@@ -168,7 +168,7 @@ export const PAYMENT_METHODS: PaymentMethod[] = [
     feeFixed: 0,
     badge: 'Instan & Cepat',
     accountNumber: '085124935573',
-    accountHolder: 'GROWSTORE RESMI',
+    accountHolder: 'DLCHEAPS RESMI',
     instruction: 'Transfer / kirim saldo GoPay ke nomor ponsel toko di atas.',
     iconName: 'Smartphone',
   },
@@ -180,7 +180,7 @@ export const PAYMENT_METHODS: PaymentMethod[] = [
     feeFixed: 0,
     badge: 'Antar Bank Bebas Biaya',
     accountNumber: '1058-2940-1928',
-    accountHolder: 'GROWSTORE RESMI',
+    accountHolder: 'DLCHEAPS RESMI',
     instruction: 'Transfer via Bank Jago atau transfer antar bank (Kode Bank Jago: 542).',
     iconName: 'Building2',
   }
@@ -310,7 +310,7 @@ export const CUSTOMER_REVIEWS: ReviewItem[] = [
 export const FAQS: FaqItem[] = [
   {
     category: 'beli',
-    question: 'Gimana cara beli BGL / DL di GrowStore?',
+    question: 'Gimana cara beli BGL / DL di dlcheaps?',
     answer: 'Pilih menu "Beli", tentukan jumlah DL/BGL. Masukkan GrowID dan nama World Anda (pastikan sudah dipasang Donation Box atau Display Box). Pilih pembayaran via QRIS atau Transfer Bank, selesaikan pembayaran, dan bot kami langsung terbang ke world Anda mengantarkan item.',
   },
   {
