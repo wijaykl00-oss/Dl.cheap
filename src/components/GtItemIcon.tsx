@@ -70,20 +70,15 @@ export const GtItemIcon: React.FC<GtItemIconProps> = ({ type, className = '', si
   }
 
   if (type === 'magplant') {
-    // Magplant 5000: Dark box with glowing green orb
+    // Magplant 5000
     return (
-      <div className={`relative flex items-center justify-center rounded-lg bg-slate-900 border border-emerald-500/30 shadow-sm ${dim} ${className}`}>
-        <svg viewBox="0 0 24 24" className="w-4/5 h-4/5" fill="none" xmlns="http://www.w3.org/2000/svg">
-          {/* Base box */}
-          <rect x="5" y="10" width="14" height="11" rx="1" fill="#1E293B" stroke="#10B981" strokeWidth="1.2" />
-          {/* Floating green sphere */}
-          <circle cx="12" cy="7" r="4.5" fill="#10B981" stroke="#34D399" strokeWidth="1" />
-          <path d="M12 3V11M8 7H16" stroke="#A7F3D0" strokeWidth="0.8" />
-          <rect x="8" y="13" width="8" height="5" fill="#0F172A" />
-          <circle cx="10" cy="15.5" r="0.9" fill="#34D399" />
-          <circle cx="12" cy="15.5" r="0.9" fill="#34D399" />
-          <circle cx="14" cy="15.5" r="0.9" fill="#34D399" />
-        </svg>
+      <div className={`relative flex items-center justify-center rounded-lg bg-slate-900/80 border border-emerald-500/30 shadow-sm overflow-hidden p-0.5 ${dim} ${className}`}>
+        <img
+          src="/foto/magplant.png"
+          alt="Magplant 5000"
+          className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(16,185,129,0.35)]"
+          loading="lazy"
+        />
       </div>
     );
   }
