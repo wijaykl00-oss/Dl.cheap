@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { HeroTransaction } from './components/HeroTransaction';
-import { RateStockTable } from './components/RateStockTable';
 import { LiveFeedReviews } from './components/LiveFeedReviews';
 import { OrderModal } from './components/OrderModal';
 import { OrderTrackerModal } from './components/OrderTrackerModal';
-import { AuthModal } from './components/AuthModal';
 import { Footer } from './components/Footer';
 import { MarketItem, Order, TransactionMode } from './types';
 import { MARKET_ITEMS } from './data/marketData';
-import { MessageCircle, ShieldCheck } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 
 export default function App() {
   // Main selected item & transaction mode
@@ -19,10 +17,9 @@ export default function App() {
   // Modals state
   const [activeModalOrder, setActiveModalOrder] = useState<Order | null>(null);
   const [isTrackerOpen, setIsTrackerOpen] = useState(false);
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
 
-  // Authenticated user state
-  const [currentUser, setCurrentUser] = useState<{ growId: string; name: string } | null>({
+  // User state
+  const [currentUser] = useState<{ growId: string; name: string } | null>({
     growId: 'Reyhan_GT',
     name: 'Reyhan Pratama',
   });
@@ -86,24 +83,6 @@ export default function App() {
     }
   };
 
-  // Switch mode from Table action
-  const handleSelectTableAction = (item: MarketItem, mode: TransactionMode) => {
-    setSelectedItem(item);
-    setActiveMode(mode);
-    // Smooth scroll to transaction console
-    const elem = document.getElementById('transaksi');
-    if (elem) {
-      elem.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const scrollToRates = () => {
-    const elem = document.getElementById('tabel-rate');
-    if (elem) {
-      elem.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const scrollToFaq = () => {
     const elem = document.getElementById('faq');
     if (elem) {
@@ -117,10 +96,6 @@ export default function App() {
       {/* Navigation Header */}
       <Header
         onOpenTracker={() => setIsTrackerOpen(true)}
-        onOpenAuth={() => setIsAuthOpen(true)}
-        currentUser={currentUser}
-        onLogout={() => setCurrentUser(null)}
-        onScrollToRates={scrollToRates}
         onScrollToFaq={scrollToFaq}
       />
 
@@ -134,11 +109,6 @@ export default function App() {
           onSwitchMode={setActiveMode}
           onSubmitOrder={handleSubmitOrder}
           userGrowIdPrefill={currentUser?.growId || ''}
-        />
-
-        {/* Realtime Rate & Stock Table */}
-        <RateStockTable
-          onSelectAction={handleSelectTableAction}
         />
 
         {/* Live Feed & Reviews Testimonial */}
@@ -182,13 +152,6 @@ export default function App() {
             setIsTrackerOpen(false);
             setActiveModalOrder(order);
           }}
-        />
-      )}
-
-      {isAuthOpen && (
-        <AuthModal
-          onClose={() => setIsAuthOpen(false)}
-          onLoginSuccess={(user) => setCurrentUser(user)}
         />
       )}
 

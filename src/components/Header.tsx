@@ -1,63 +1,25 @@
 import React, { useState } from 'react';
 import { 
   Search, 
-  User, 
   Menu, 
   X, 
-  ShieldCheck, 
-  MessageCircle,
-  HelpCircle,
-  Clock,
-  ExternalLink
+  MessageCircle
 } from 'lucide-react';
 import { GtItemIcon } from './GtItemIcon';
 
 interface HeaderProps {
   onOpenTracker: () => void;
-  onOpenAuth: () => void;
-  currentUser: { growId: string; name: string } | null;
-  onLogout: () => void;
-  onScrollToRates: () => void;
   onScrollToFaq: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   onOpenTracker,
-  onOpenAuth,
-  currentUser,
-  onLogout,
-  onScrollToRates,
   onScrollToFaq,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-800 bg-slate-950/95 backdrop-blur-sm">
-      {/* Top Banner Status Bar (Clean & Real Informative) */}
-      <div className="border-b border-slate-800/80 bg-slate-900/90 py-1.5 px-4 text-xs">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 text-slate-300">
-          <div className="flex items-center gap-3 text-[11px] sm:text-xs">
-            <div className="flex items-center gap-1.5">
-              <span className="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
-              <span className="font-medium text-slate-300">Server GT: <span className="text-emerald-400 font-semibold">Online</span></span>
-            </div>
-            <span className="text-slate-700 hidden sm:inline">•</span>
-            <div className="hidden sm:flex items-center gap-1 text-slate-400">
-              <span>Bot Delivery: <strong className="text-slate-200">24 Jam Non-Stop</strong></span>
-            </div>
-            <span className="text-slate-700 hidden sm:inline">•</span>
-            <div className="hidden md:flex items-center gap-1 text-slate-400">
-              <span>CS WhatsApp: <strong className="text-emerald-400">08.00 - 24.00 WIB</strong></span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2 text-[11px] text-amber-300/90">
-            <ShieldCheck className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-            <span>Waspada Penipuan: Admin tidak pernah minta password GrowID!</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main Nav */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         {/* Brand Logo */}
@@ -83,12 +45,6 @@ export const Header: React.FC<HeaderProps> = ({
           <a href="#transaksi" className="hover:text-emerald-400 transition-colors">
             Order Lock
           </a>
-          <button 
-            onClick={onScrollToRates}
-            className="hover:text-cyan-400 transition-colors cursor-pointer"
-          >
-            Daftar Rate Hari Ini
-          </button>
           <a href="#testimoni" className="hover:text-slate-100 transition-colors">
             Testimoni & Log
           </a>
@@ -124,31 +80,6 @@ export const Header: React.FC<HeaderProps> = ({
             <span>WA Admin</span>
           </a>
 
-          {/* Auth Button / Profile */}
-          {currentUser ? (
-            <div className="flex items-center gap-2 bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-xs">
-              <div className="w-6 h-6 rounded bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">
-                {currentUser.growId.charAt(0).toUpperCase()}
-              </div>
-              <span className="font-medium text-slate-200 hidden sm:inline">{currentUser.growId}</span>
-              <button
-                onClick={onLogout}
-                className="text-[11px] text-slate-400 hover:text-rose-400 ml-1 transition-colors cursor-pointer"
-                title="Keluar akun"
-              >
-                Keluar
-              </button>
-            </div>
-          ) : (
-            <button
-              onClick={onOpenAuth}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-white transition-colors cursor-pointer"
-            >
-              <User className="w-3.5 h-3.5 text-slate-400" />
-              <span>Masuk</span>
-            </button>
-          )}
-
           {/* Mobile Menu Trigger */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -170,15 +101,6 @@ export const Header: React.FC<HeaderProps> = ({
           >
             Beli & Jual Lock
           </a>
-          <button
-            onClick={() => {
-              setIsMobileMenuOpen(false);
-              onScrollToRates();
-            }}
-            className="block w-full text-left py-2 text-slate-200 hover:text-emerald-400 border-b border-slate-900 cursor-pointer"
-          >
-            Daftar Rate & Stok
-          </button>
           <a
             href="#testimoni"
             onClick={() => setIsMobileMenuOpen(false)}

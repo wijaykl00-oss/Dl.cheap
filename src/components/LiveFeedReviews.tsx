@@ -2,16 +2,12 @@ import React, { useState } from 'react';
 import { LiveFeedItem, ReviewItem } from '../types';
 import { INITIAL_LIVE_FEED, CUSTOMER_REVIEWS } from '../data/marketData';
 import { 
-  CheckCircle, 
   Star, 
-  ShieldCheck, 
   Zap, 
-  MessageSquare,
-  ArrowUpRight,
-  ArrowDownLeft,
-  CheckCircle2,
-  Lock,
-  Headphones
+  MessageSquare, 
+  ArrowUpRight, 
+  ArrowDownLeft, 
+  Headphones 
 } from 'lucide-react';
 
 export const LiveFeedReviews: React.FC = () => {
@@ -27,20 +23,8 @@ export const LiveFeedReviews: React.FC = () => {
   return (
     <section id="testimoni" className="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-800">
       
-      {/* 3 Practical Store Guarantees (Instead of generic AI metric cards) */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-        <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 flex items-start gap-3">
-          <div className="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center shrink-0 text-emerald-400">
-            <ShieldCheck className="w-5 h-5" />
-          </div>
-          <div>
-            <h4 className="text-xs sm:text-sm font-bold text-white">100% Legal & Bebas Rollback</h4>
-            <p className="text-xs text-slate-400 mt-1 leading-relaxed">
-              Lock bersumber murni dari farming aktif dan trade bersih. Tidak menggunakan metode carding atau phising ilegal.
-            </p>
-          </div>
-        </div>
-
+      {/* 2 Practical Store Guarantees */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
         <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 flex items-start gap-3">
           <div className="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center shrink-0 text-cyan-400">
             <Zap className="w-5 h-5" />
