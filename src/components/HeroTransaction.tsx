@@ -249,7 +249,20 @@ export const HeroTransaction: React.FC<HeroTransactionProps> = ({
   };
 
   return (
-    <section id="transaksi" className="pt-4 pb-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div className="relative w-full overflow-hidden">
+      {/* Background Banner with atmospheric overlay */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
+        <img
+          src="/foto/Banner.jpeg"
+          alt="dlcheaps banner background"
+          className="w-full h-full object-cover object-top opacity-35 filter contrast-110"
+        />
+        {/* Seamless blend into website theme */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#030712]/50 via-[#030712]/75 to-[#030712]" />
+        <div className="absolute inset-0 bg-radial from-transparent via-[#030712]/40 to-[#030712]" />
+      </div>
+
+      <section id="transaksi" className="relative z-10 pt-6 pb-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
       
       {/* Mode Toggle: Beli vs Jual */}
       <div className="mb-6 flex flex-col items-center">
@@ -985,5 +998,6 @@ export const HeroTransaction: React.FC<HeroTransactionProps> = ({
       )}
 
     </section>
+    </div>
   );
 };
