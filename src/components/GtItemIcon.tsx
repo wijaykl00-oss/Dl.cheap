@@ -16,76 +16,55 @@ export const GtItemIcon: React.FC<GtItemIconProps> = ({ type, className = '', si
 
   const dim = sizeMap[size] || sizeMap.md;
 
-  // Authentic retro Growtopia pixel art sprites
+  // Real image sprites from foto/
   if (type === 'dl') {
-    // Diamond Lock: Cyan blue faceted diamond lock with metallic shackle
     return (
-      <div className={`relative flex items-center justify-center rounded-lg bg-slate-900 border border-cyan-500/30 shadow-sm ${dim} ${className}`}>
-        <svg viewBox="0 0 24 24" className="w-4/5 h-4/5 image-rendering-pixelated" fill="none" xmlns="http://www.w3.org/2000/svg">
-          {/* Shackle */}
-          <path d="M8 9V6C8 3.79 9.79 2 12 2C14.21 2 16 3.79 16 6V9" stroke="#E0F2FE" strokeWidth="2.2" strokeLinecap="square" />
-          {/* Diamond Body */}
-          <path d="M12 7L19 12L12 22L5 12L12 7Z" fill="#06B6D4" stroke="#0891B2" strokeWidth="1" />
-          {/* Facets */}
-          <path d="M5 12H19" stroke="#67E8F9" strokeWidth="1" />
-          <path d="M12 7V22" stroke="#22D3EE" strokeWidth="1" />
-          <path d="M12 12L8 9.5M12 12L16 9.5M12 12L8 16.5M12 12L16 16.5" stroke="#CFFAFE" strokeWidth="0.9" />
-          {/* Pixel highlights */}
-          <rect x="11" y="11" width="2" height="2" fill="#FFFFFF" />
-          <rect x="7" y="11" width="1.5" height="1.5" fill="#E0F2FE" />
-        </svg>
+      <div className={`relative flex items-center justify-center rounded-lg bg-slate-900/80 border border-cyan-500/30 shadow-sm overflow-hidden p-0.5 ${dim} ${className}`}>
+        <img
+          src="/foto/dls.png"
+          alt="Diamond Lock"
+          className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(6,182,212,0.35)]"
+          loading="lazy"
+        />
       </div>
     );
   }
 
   if (type === 'bgl') {
-    // Blue Gem Lock: Royal Blue glowing gem lock
     return (
-      <div className={`relative flex items-center justify-center rounded-lg bg-slate-900 border border-blue-500/30 shadow-sm ${dim} ${className}`}>
-        <svg viewBox="0 0 24 24" className="w-4/5 h-4/5" fill="none" xmlns="http://www.w3.org/2000/svg">
-          {/* Shackle */}
-          <path d="M8 9V6C8 3.79 9.79 2 12 2C14.21 2 16 3.79 16 6V9" stroke="#93C5FD" strokeWidth="2.2" strokeLinecap="square" />
-          {/* Gem Body */}
-          <path d="M7 9H17L20 13L12 22L4 13L7 9Z" fill="#2563EB" stroke="#1D4ED8" strokeWidth="1" />
-          {/* Facet lines */}
-          <path d="M4 13H20M12 9V22M7 9L12 22M17 9L12 22" stroke="#60A5FA" strokeWidth="0.8" />
-          {/* Gem Sparkle */}
-          <rect x="9" y="11" width="2" height="2" fill="#FFFFFF" />
-          <rect x="15" y="14" width="1.5" height="1.5" fill="#BFDBFE" />
-        </svg>
+      <div className={`relative flex items-center justify-center rounded-lg bg-slate-900/80 border border-blue-500/30 shadow-sm overflow-hidden p-0.5 ${dim} ${className}`}>
+        <img
+          src="/foto/bgls.png"
+          alt="Blue Gem Lock"
+          className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(37,99,235,0.4)]"
+          loading="lazy"
+        />
       </div>
     );
   }
 
   if (type === 'wl') {
-    // World Lock: Classic bronze globe lock
     return (
-      <div className={`relative flex items-center justify-center rounded-lg bg-slate-900 border border-amber-500/30 shadow-sm ${dim} ${className}`}>
-        <svg viewBox="0 0 24 24" className="w-4/5 h-4/5" fill="none" xmlns="http://www.w3.org/2000/svg">
-          {/* Shackle */}
-          <path d="M8 9V6C8 3.79 9.79 2 12 2C14.21 2 16 3.79 16 6V9" stroke="#FDE68A" strokeWidth="2.2" strokeLinecap="square" />
-          {/* Lock Body */}
-          <rect x="5" y="9" width="14" height="12" rx="1" fill="#D97706" stroke="#B45309" strokeWidth="1" />
-          {/* Globe meridian */}
-          <circle cx="12" cy="15" r="4" fill="#92400E" stroke="#FBBF24" strokeWidth="0.8" />
-          <path d="M12 11V19M8 15H16" stroke="#FDE68A" strokeWidth="0.8" />
-          <rect x="11.5" y="14.5" width="1.2" height="1.2" fill="#FFFFFF" />
-        </svg>
+      <div className={`relative flex items-center justify-center rounded-lg bg-slate-900/80 border border-amber-500/30 shadow-sm overflow-hidden p-0.5 ${dim} ${className}`}>
+        <img
+          src="/foto/wls.png"
+          alt="World Lock"
+          className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(245,158,11,0.35)]"
+          loading="lazy"
+        />
       </div>
     );
   }
 
   if (type === 'rayman') {
-    // Rayman's Fist: Boxing glove
     return (
-      <div className={`relative flex items-center justify-center rounded-lg bg-slate-900 border border-yellow-500/30 shadow-sm ${dim} ${className}`}>
-        <svg viewBox="0 0 24 24" className="w-4/5 h-4/5" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="5" y="7" width="13" height="11" rx="3" fill="#EAB308" stroke="#CA8A04" strokeWidth="1" />
-          <rect x="14" y="5" width="6" height="7" rx="2" fill="#FACC15" stroke="#CA8A04" strokeWidth="0.8" />
-          <rect x="4" y="17" width="15" height="4" rx="1" fill="#F8FAFC" stroke="#94A3B8" strokeWidth="1" />
-          {/* Impact star */}
-          <path d="M18 4L20 2M21 6L23 5M20 9L22 10" stroke="#FDE047" strokeWidth="1.2" />
-        </svg>
+      <div className={`relative flex items-center justify-center rounded-lg bg-slate-900/80 border border-yellow-500/30 shadow-sm overflow-hidden p-0.5 ${dim} ${className}`}>
+        <img
+          src="/foto/rayman.png"
+          alt="Rayman's Fist"
+          className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(234,179,8,0.35)]"
+          loading="lazy"
+        />
       </div>
     );
   }
