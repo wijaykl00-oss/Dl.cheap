@@ -91,12 +91,13 @@ export const GtItemIcon: React.FC<GtItemIconProps> = ({ type, className = '', si
   if (type === 'ghc') {
     // Golden Heart Crystal
     return (
-      <div className={`relative flex items-center justify-center rounded-lg bg-slate-900 border border-amber-500/30 shadow-sm ${dim} ${className}`}>
-        <svg viewBox="0 0 24 24" className="w-4/5 h-4/5" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 21L4.5 13.5C2.5 11.5 2.5 8 4.5 6C6.5 4 10 4 12 6.5C14 4 17.5 4 19.5 6C21.5 8 21.5 11.5 19.5 13.5L12 21Z" fill="#F59E0B" stroke="#D97706" strokeWidth="1" />
-          <path d="M12 6.5V21M4.5 6L12 13.5L19.5 6" stroke="#FDE68A" strokeWidth="0.8" />
-          <rect x="8" y="8" width="1.5" height="1.5" fill="#FFFFFF" />
-        </svg>
+      <div className={`relative flex items-center justify-center rounded-lg bg-slate-900/80 border border-amber-500/30 shadow-sm overflow-hidden p-0.5 ${dim} ${className}`}>
+        <img
+          src="/foto/ghc.png"
+          alt="Golden Heart Crystal"
+          className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(245,158,11,0.35)]"
+          loading="lazy"
+        />
       </div>
     );
   }

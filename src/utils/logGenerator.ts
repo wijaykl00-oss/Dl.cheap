@@ -15,8 +15,7 @@ const ITEMS_POOL = [
   { name: 'World Lock (WL Pack 100x)', unit: 'Pack', buyPrice: 3500, sellPrice: 2700, quantities: [5, 10, 20, 50] },
   { name: "Rayman's Fist", unit: 'Pcs', buyPrice: 1450000, sellPrice: 1320000, quantities: [1] },
   { name: 'Magplant 5000', unit: 'Pcs', buyPrice: 890000, sellPrice: 790000, quantities: [1] },
-  { name: 'Golden Dragon Wings', unit: 'Pcs', buyPrice: 240000, sellPrice: 210000, quantities: [1, 2] },
-  { name: 'Geiger Counter (Alive)', unit: 'Pcs', buyPrice: 45000, sellPrice: 36000, quantities: [2, 5, 10] },
+  { name: 'Golden Heart Crystal (GHC)', unit: 'Pcs', buyPrice: 4200000, sellPrice: 3850000, quantities: [1] },
 ];
 
 const METHODS = ['QRIS', 'DANA', 'GoPay', 'Bank Jago'];
