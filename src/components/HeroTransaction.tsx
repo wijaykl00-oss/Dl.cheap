@@ -250,19 +250,25 @@ export const HeroTransaction: React.FC<HeroTransactionProps> = ({
 
   return (
     <div className="relative w-full overflow-hidden">
-      {/* Background Banner with atmospheric overlay */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
-        <img
-          src="/foto/Banner.jpeg"
-          alt="dlcheaps banner background"
-          className="w-full h-full object-cover object-top opacity-35 filter contrast-110"
-        />
-        {/* Seamless blend into website theme */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#030712]/50 via-[#030712]/75 to-[#030712]" />
-        <div className="absolute inset-0 bg-radial from-transparent via-[#030712]/40 to-[#030712]" />
+      {/* Ambient background glow matching the banner colors */}
+      <div className="absolute top-0 left-0 right-0 h-[600px] z-0 pointer-events-none overflow-hidden select-none">
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[800px] sm:w-[1000px] h-[450px] bg-sky-500/20 blur-[130px] rounded-full" />
+        <div className="absolute top-20 left-1/4 w-[400px] h-[300px] bg-blue-600/15 blur-[100px] rounded-full" />
+        <div className="absolute top-20 right-1/4 w-[400px] h-[300px] bg-emerald-500/10 blur-[100px] rounded-full" />
       </div>
 
-      <section id="transaksi" className="relative z-10 pt-6 pb-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      <section id="transaksi" className="relative z-10 pt-4 pb-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      
+      {/* Featured Store Banner */}
+      <div className="mb-6 relative rounded-2xl sm:rounded-3xl overflow-hidden border border-sky-500/30 shadow-[0_10px_35px_rgba(14,165,233,0.2)] bg-[#081126] group">
+        <img
+          src="/foto/Banner.jpeg"
+          alt="dlcheaps official banner"
+          width={1376}
+          height={768}
+          className="w-full h-auto aspect-[1376/768] object-cover block group-hover:scale-[1.01] transition-transform duration-500"
+        />
+      </div>
       
       {/* Mode Toggle: Beli vs Jual */}
       <div className="mb-6 flex flex-col items-center">
