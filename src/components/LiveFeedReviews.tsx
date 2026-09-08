@@ -8,8 +8,7 @@ import {
   MessageSquare, 
   ArrowUpRight, 
   ArrowDownLeft, 
-  Headphones,
-  RefreshCw
+  Headphones
 } from 'lucide-react';
 
 export const LiveFeedReviews: React.FC = () => {
@@ -19,30 +18,22 @@ export const LiveFeedReviews: React.FC = () => {
   const [timeBlock, setTimeBlock] = useState<number>(getCurrentTimeBlock());
   const [liveFeeds, setLiveFeeds] = useState<LiveFeedItem[]>(() => generateDynamicLogs(getCurrentTimeBlock()));
   const [activeFeedTab, setActiveFeedTab] = useState<'all' | 'buy' | 'sell'>('all');
-  const [isRefreshing, setIsRefreshing] = useState(false);
 
   // Automatically update logs whenever a new 30-minute interval is reached
   useEffect(() => {
     const interval = setInterval(() => {
       const currentBlock = getCurrentTimeBlock();
-      if (currentBlock !== timeBlock) {
-        setTimeBlock(currentBlock);
-        setLiveFeeds(generateDynamicLogs(currentBlock));
-      }
-    }, 10000); // check every 10 seconds
+      setTimeBlock((prevBlock) => {
+        if (currentBlock !== prevBlock) {
+          setLiveFeeds(generateDynamicLogs(currentBlock));
+          return currentBlock;
+        }
+        return prevBlock;
+      });
+    }, 10000); // check every 10 seconds for new 30-min window
 
     return () => clearInterval(interval);
-  }, [timeBlock]);
-
-  // Optional manual refresh button simulation
-  const handleManualRefresh = () => {
-    setIsRefreshing(true);
-    setTimeout(() => {
-      const randomSeed = Math.floor(Math.random() * 100000);
-      setLiveFeeds(generateDynamicLogs(randomSeed));
-      setIsRefreshing(false);
-    }, 500);
-  };
+  }, []);
 
   const filteredFeeds = liveFeeds.filter((feed) => {
     if (activeFeedTab === 'buy') return feed.type === 'buy';
@@ -88,8 +79,8 @@ export const LiveFeedReviews: React.FC = () => {
           <div className="flex items-center justify-between border-b border-blue-950/80 pb-3">
             <div className="flex items-center gap-2">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-400"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
               </span>
               <h3 className="font-bold text-white text-xs sm:text-sm uppercase tracking-wider">
                 Log Transaksi Terakhir
@@ -97,14 +88,10 @@ export const LiveFeedReviews: React.FC = () => {
             </div>
             
             <div className="flex items-center gap-1.5">
-              <button
-                type="button"
-                onClick={handleManualRefresh}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-sky-300 hover:bg-[#0e1c3e] transition-colors cursor-pointer"
-                title="Refresh log transaksi"
-              >
-                <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? 'animate-spin text-sky-400' : ''}`} />
-              </button>
+              <span className="text-[10px] font-medium text-slate-400 bg-[#040814] px-2.5 py-1 rounded-full border border-blue-900/60 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
+                Auto Update Tiap 30 Menit
+              </span>
             </div>
           </div>
 
